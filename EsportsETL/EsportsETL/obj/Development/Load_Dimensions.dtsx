@@ -1,0 +1,2751 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/24/2026 8:03:17 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WATHSARA"
+  DTS:CreatorName="WATHSARA\Administrator"
+  DTS:DTSID="{38A37A89-C6A0-4AD4-A837-4765BE2F7225}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load_Dimensions"
+  DTS:PackageType="5"
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{7B4CE7ED-C085-41D9-A0D4-9EAB017C4E40}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WATHSARA\WATHSARA.EsportsDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{91CC6645-AE68-4CD1-BA4E-11B46FE06753}"
+      DTS:ObjectName="WATHSARA\WATHSARA.EsportsDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=WATHSARA\WATHSARA;Initial Catalog=EsportsDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Load_Dimensions-{91CC6645-AE68-4CD1-BA4E-11B46FE06753}WATHSARA\WATHSARA.EsportsDW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Dim_Map"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0AB0ECB3-25F5-4437-BD9A-F87C09E44C23}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Dim_Map"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Dim_Map\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Map]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Dim_Map\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{4DFB5F2C-43B3-4290-9A6A-7C3E9E7F3560}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[WATHSARA_WATHSARA.EsportsDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Dim_Map\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Dim_Map\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[map_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="map_name"
+                      externalMetadataColumnId="Package\Load Dim_Map\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[map_name]"
+                      lineageId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].Columns[map_name]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Map\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[map_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="map_type"
+                      externalMetadataColumnId="Package\Load Dim_Map\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[map_type]"
+                      lineageId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].Columns[map_type]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Map\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[map_size]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="map_size"
+                      externalMetadataColumnId="Package\Load Dim_Map\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[map_size]"
+                      lineageId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].Columns[map_size]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Map\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[map_key]"
+                      dataType="i4"
+                      name="map_key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Map\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[map_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="map_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Map\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[map_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="map_type" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Map\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[map_size]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="map_size" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dim_Map\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Dim_Map\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Map\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Map\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dim_Map\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Map\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dim_Map\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT 
+    CAST(map_played AS VARCHAR(100)) AS map_name,
+    CAST(
+        CASE 
+            WHEN map_played IN ('Skyline','Neon City','Metro Chaos') THEN 'Urban'
+            WHEN map_played IN ('Desert Storm','Dust Arena','Blood Canyon') THEN 'Desert'
+            WHEN map_played = 'Frozen Base' THEN 'Arctic'
+            ELSE 'Other'
+        END AS VARCHAR(50)
+    ) AS map_type,
+    CAST(
+        CASE 
+            WHEN map_played IN ('Skyline','Neon City','Desert Storm','Blood Canyon') THEN 'Large'
+            WHEN map_played IN ('Frozen Base','Volcano Ridge','Metro Chaos') THEN 'Medium'
+            ELSE 'Small'
+        END AS VARCHAR(20)
+    ) AS map_size
+FROM Stg_MatchPerformance
+WHERE map_played IS NOT NULL 
+AND map_played &lt;&gt; ''</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Dim_Map\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{13FA1FA8-98CD-4387-AB5A-339DB90430E6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[WATHSARA_WATHSARA.EsportsStaging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].Columns[map_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[map_name]"
+                      length="100"
+                      lineageId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].Columns[map_name]"
+                      name="map_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].Columns[map_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[map_type]"
+                      length="50"
+                      lineageId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].Columns[map_type]"
+                      name="map_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].Columns[map_size]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[map_size]"
+                      length="20"
+                      lineageId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].Columns[map_size]"
+                      name="map_size"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[map_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="map_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[map_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="map_type" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[map_size]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="map_size" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[map_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[map_name]"
+                      name="map_name" />
+                    <outputColumn
+                      refId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[map_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[map_type]"
+                      name="map_type" />
+                    <outputColumn
+                      refId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[map_size]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[map_size]"
+                      name="map_size" />
+                    <outputColumn
+                      refId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Dim_Map.Paths[OLE DB Source Output]"
+              endId="Package\Load Dim_Map\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Dim_Map\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Dim_Player with SCD2"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9320F79C-725D-4436-B84C-8B5FF8B20368}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Dim_Player with SCD2"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Dim_Player with SCD2\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Dim_Player with SCD2\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Conditional Split.Inputs[Conditional Split Input].Columns[team_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="team_name"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[team_name]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Conditional Split.Inputs[Conditional Split Input].Columns[region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="region"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Conditional Split.Inputs[Conditional Split Input].Columns[existing_team]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="existing_team"
+                      lineageId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Match Output].Columns[existing_team]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Conditional Split.Inputs[Conditional Split Input].Columns[existing_region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="existing_region"
+                      lineageId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Match Output].Columns[existing_region]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\Conditional Split.Outputs[TeamChanged]"
+                  description="Output 3 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="TeamChanged"
+                  synchronousInputId="Package\Load Dim_Player with SCD2\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[team_name]} != #{Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Match Output].Columns[existing_team]} || #{Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]} != #{Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Match Output].Columns[existing_region]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">team_name != existing_team || region != existing_region</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\Conditional Split.Outputs[NoChange]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="NoChange"
+                  synchronousInputId="Package\Load Dim_Player with SCD2\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load Dim_Player with SCD2\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dim_Player with SCD2\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Dim_Player with SCD2\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Dim_Player with SCD2\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Derived Column.Outputs[Derived Column Output].Columns[eff_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Dim_Player with SCD2\Derived Column.Outputs[Derived Column Output].Columns[eff_date]"
+                      name="eff_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Derived Column.Outputs[Derived Column Output].Columns[curr_flag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Dim_Player with SCD2\Derived Column.Outputs[Derived Column Output].Columns[curr_flag]"
+                      name="curr_flag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_BOOL) TRUE </property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_BOOL) TRUE </property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Dim_Player with SCD2\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dim_Player with SCD2\Expire Old Record"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Expire Old Record"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE Dim_Player 
+SET is_current = 0, 
+    expiry_date = CAST(GETDATE() AS DATE)
+WHERE player_id = ? 
+AND is_current = 1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Dim_Player with SCD2\Expire Old Record.Connections[OleDbConnection]"
+                  connectionManagerID="{4DFB5F2C-43B3-4290-9A6A-7C3E9E7F3560}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[WATHSARA_WATHSARA.EsportsDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Dim_Player with SCD2\Expire Old Record.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Expire Old Record.Inputs[OLE DB Command Input].Columns[player_id]"
+                      cachedDataType="i4"
+                      cachedName="player_id"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Expire Old Record.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Expire Old Record.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\Expire Old Record.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Load Dim_Player with SCD2\Expire Old Record.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\Expire Old Record.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Load Dim_Player with SCD2\Expire Old Record.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Expire Old Record.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\Expire Old Record.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Expire Old Record.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\Expire Old Record.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dim_Player with SCD2\Insert New Players"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert New Players"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Player]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Dim_Player with SCD2\Insert New Players.Connections[OleDbConnection]"
+                  connectionManagerID="{4DFB5F2C-43B3-4290-9A6A-7C3E9E7F3560}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[WATHSARA_WATHSARA.EsportsDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].Columns[player_id]"
+                      cachedDataType="i4"
+                      cachedName="player_id"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[player_id]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_id]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].Columns[player_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="player_name"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[player_name]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_name]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].Columns[player_role]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="player_role"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[player_role]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_role]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].Columns[country]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="country"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[country]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].Columns[join_year]"
+                      cachedDataType="i4"
+                      cachedName="join_year"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[join_year]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[join_year]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].Columns[platform]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="platform"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[platform]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[platform]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].Columns[is_active]"
+                      cachedDataType="bool"
+                      cachedName="is_active"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[is_active]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[is_active]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].Columns[team_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="team_name"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[team_name]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[team_name]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].Columns[region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[region]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[player_key]"
+                      dataType="i4"
+                      name="player_key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[player_id]"
+                      dataType="i4"
+                      name="player_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[player_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="player_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[player_role]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="player_role" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[join_year]"
+                      dataType="i4"
+                      name="join_year" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[platform]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="platform" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[team_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="team_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[is_active]"
+                      dataType="bool"
+                      name="is_active" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[effective_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="effective_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[expiry_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="expiry_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
+                      dataType="bool"
+                      name="is_current" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\Insert New Players.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\Insert New Players.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert New Players.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\Insert New Players.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dim_Player with SCD2\Insert Updated Player"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Updated Player"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Player]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Connections[OleDbConnection]"
+                  connectionManagerID="{4DFB5F2C-43B3-4290-9A6A-7C3E9E7F3560}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[WATHSARA_WATHSARA.EsportsDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].Columns[player_id]"
+                      cachedDataType="i4"
+                      cachedName="player_id"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[player_id]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_id]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].Columns[player_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="player_name"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[player_name]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_name]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].Columns[player_role]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="player_role"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[player_role]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_role]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].Columns[country]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="country"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[country]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].Columns[join_year]"
+                      cachedDataType="i4"
+                      cachedName="join_year"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[join_year]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[join_year]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].Columns[platform]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="platform"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[platform]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[platform]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].Columns[is_active]"
+                      cachedDataType="bool"
+                      cachedName="is_active"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[is_active]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[is_active]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].Columns[team_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="team_name"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[team_name]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[team_name]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].Columns[region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[region]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[player_key]"
+                      dataType="i4"
+                      name="player_key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[player_id]"
+                      dataType="i4"
+                      name="player_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[player_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="player_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[player_role]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="player_role" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[join_year]"
+                      dataType="i4"
+                      name="join_year" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[platform]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="platform" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[team_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="team_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[is_active]"
+                      dataType="bool"
+                      name="is_active" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[effective_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="effective_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[expiry_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="expiry_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
+                      dataType="bool"
+                      name="is_current" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\Insert Updated Player.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Insert Updated Player.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\Insert Updated Player.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dim_Player with SCD2\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT player_key, player_id, team_name, region, is_current 
+  FROM Dim_Player 
+  WHERE is_current = 1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT player_key, player_id, team_name, region, is_current 
+  FROM Dim_Player 
+  WHERE is_current = 1) [refTable]
+where [refTable].[player_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="player_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="player_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="team_name" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="region" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="is_current" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Dim_Player with SCD2\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{4DFB5F2C-43B3-4290-9A6A-7C3E9E7F3560}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[WATHSARA_WATHSARA.EsportsDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Dim_Player with SCD2\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Dim_Player with SCD2\Lookup.Inputs[Lookup Input].Columns[player_id]"
+                      cachedDataType="i4"
+                      cachedName="player_id"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">player_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load Dim_Player with SCD2\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Match Output].Columns[player_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Match Output].Columns[player_key]"
+                      name="player_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">player_key</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Match Output].Columns[existing_team]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Match Output].Columns[existing_team]"
+                      name="existing_team"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">team_name</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Match Output].Columns[existing_region]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Match Output].Columns[existing_region]"
+                      name="existing_region"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">region</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load Dim_Player with SCD2\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load Dim_Player with SCD2\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dim_Player with SCD2\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    CAST(p.player_id AS INT) AS player_id,
+    CAST(p.player_name AS VARCHAR(100)) AS player_name,
+    CAST(p.player_role AS VARCHAR(50)) AS player_role,
+    CAST(p.country AS VARCHAR(50)) AS country,
+    CAST(p.join_year AS INT) AS join_year,
+    CAST(p.platform AS VARCHAR(20)) AS platform,
+    CAST(p.is_active AS BIT) AS is_active,
+    CAST(t.team_name AS VARCHAR(100)) AS team_name,
+    CAST(t.region AS VARCHAR(50)) AS region
+FROM Stg_Players p
+JOIN Stg_Teams t ON p.team_id = t.team_id</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Dim_Player with SCD2\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{13FA1FA8-98CD-4387-AB5A-339DB90430E6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[WATHSARA_WATHSARA.EsportsStaging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[player_id]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_id]"
+                      name="player_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[player_name]"
+                      length="100"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_name]"
+                      name="player_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_role]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[player_role]"
+                      length="50"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[player_role]"
+                      name="player_role"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      length="50"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[country]"
+                      name="country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[join_year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[join_year]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[join_year]"
+                      name="join_year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[platform]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[platform]"
+                      length="20"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[platform]"
+                      name="platform"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[is_active]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[is_active]"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[is_active]"
+                      name="is_active"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[team_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[team_name]"
+                      length="100"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[team_name]"
+                      name="team_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[region]"
+                      length="50"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[player_id]"
+                      dataType="i4"
+                      name="player_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[player_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="player_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[player_role]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="player_role" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[join_year]"
+                      dataType="i4"
+                      name="join_year" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[platform]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="platform" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[is_active]"
+                      dataType="bool"
+                      name="is_active" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[team_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="team_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="region" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[player_id]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[player_id]"
+                      name="player_id" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[player_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[player_name]"
+                      name="player_name" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[player_role]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[player_role]"
+                      name="player_role" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[country]"
+                      name="country" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[join_year]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[join_year]"
+                      name="join_year" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[platform]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[platform]"
+                      name="platform" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[is_active]"
+                      dataType="bool"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[is_active]"
+                      name="is_active" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[team_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[team_name]"
+                      name="team_name" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[region]"
+                      name="region" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Dim_Player with SCD2.Paths[Derived Column Output]"
+              endId="Package\Load Dim_Player with SCD2\Insert New Players.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load Dim_Player with SCD2\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Dim_Player with SCD2.Paths[Lookup Match Output]"
+              endId="Package\Load Dim_Player with SCD2\Conditional Split.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load Dim_Player with SCD2.Paths[Lookup No Match Output]"
+              endId="Package\Load Dim_Player with SCD2\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Load Dim_Player with SCD2\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Load Dim_Player with SCD2.Paths[OLE DB Command Output]"
+              endId="Package\Load Dim_Player with SCD2\Insert Updated Player.Inputs[OLE DB Destination Input]"
+              name="OLE DB Command Output"
+              startId="Package\Load Dim_Player with SCD2\Expire Old Record.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Load Dim_Player with SCD2.Paths[OLE DB Source Output]"
+              endId="Package\Load Dim_Player with SCD2\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Dim_Player with SCD2\OLE DB Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load Dim_Player with SCD2.Paths[TeamChanged]"
+              endId="Package\Load Dim_Player with SCD2\Expire Old Record.Inputs[OLE DB Command Input]"
+              name="TeamChanged"
+              startId="Package\Load Dim_Player with SCD2\Conditional Split.Outputs[TeamChanged]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Dim_Tournament"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5865F851-DBAD-4988-8E08-E851EE299877}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Dim_Tournament"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Dim_Tournament\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Tournament]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Dim_Tournament\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{4DFB5F2C-43B3-4290-9A6A-7C3E9E7F3560}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[WATHSARA_WATHSARA.EsportsDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tournament_id]"
+                      cachedDataType="i8"
+                      cachedName="tournament_id"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tournament_id]"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[tournament_id]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[tournament_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="tournament_name"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tournament_name]"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[tournament_name]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[game_title]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="game_title"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[game_title]"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[game_title]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[region]"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[prize_pool_usd]"
+                      cachedDataType="i4"
+                      cachedName="prize_pool_usd"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[prize_pool_usd]"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[prize_pool_usd]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[start_date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="start_date"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[start_date]" />
+                    <inputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[end_date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="end_date"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[end_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tournament_key]"
+                      dataType="i4"
+                      name="tournament_key" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tournament_id]"
+                      dataType="i4"
+                      name="tournament_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[tournament_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="tournament_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[game_title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="game_title" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[prize_pool_usd]"
+                      dataType="i4"
+                      name="prize_pool_usd" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="end_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Dim_Tournament\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Dim_Tournament\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    ROW_NUMBER() OVER (ORDER BY tournament_name) AS tournament_id,
+    tournament_name,
+    game_title,
+    region,
+    CAST(prize_pool_usd AS INT) AS prize_pool_usd,
+    CAST(start_date AS DATE) AS start_date,
+    CAST(end_date AS DATE) AS end_date
+FROM (
+    SELECT DISTINCT 
+        tournament_name,
+        game_title,
+        region,
+        prize_pool_usd,
+        start_date,
+        end_date
+    FROM Stg_Tournaments
+) AS UniqueT</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Dim_Tournament\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{13FA1FA8-98CD-4387-AB5A-339DB90430E6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[WATHSARA_WATHSARA.EsportsStaging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[tournament_id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tournament_id]"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[tournament_id]"
+                      name="tournament_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[tournament_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tournament_name]"
+                      length="200"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[tournament_name]"
+                      name="tournament_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[game_title]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[game_title]"
+                      length="200"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[game_title]"
+                      name="game_title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[region]"
+                      length="200"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[prize_pool_usd]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[prize_pool_usd]"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[prize_pool_usd]"
+                      name="prize_pool_usd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[start_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[start_date]"
+                      length="10"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[start_date]"
+                      name="start_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[end_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[end_date]"
+                      length="10"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].Columns[end_date]"
+                      name="end_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tournament_id]"
+                      dataType="i8"
+                      name="tournament_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tournament_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="tournament_name" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[game_title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="game_title" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[prize_pool_usd]"
+                      dataType="i4"
+                      name="prize_pool_usd" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[start_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[end_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="end_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tournament_id]"
+                      dataType="i8"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tournament_id]"
+                      name="tournament_id" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tournament_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tournament_name]"
+                      name="tournament_name" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[game_title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[game_title]"
+                      name="game_title" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[region]"
+                      name="region" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prize_pool_usd]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prize_pool_usd]"
+                      name="prize_pool_usd" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[start_date]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[start_date]"
+                      name="start_date" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[end_date]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[end_date]"
+                      name="end_date" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Dim_Tournament.Paths[OLE DB Source Output]"
+              endId="Package\Load Dim_Tournament\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Dim_Tournament\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Dimension Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3E0FDC55-3860-498F-B831-B126F3F7C179}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Dimension Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{91CC6645-AE68-4CD1-BA4E-11B46FE06753}"
+          SQLTask:SqlStatementSource="ALTER DATABASE EsportsDW SET RECOVERY SIMPLE;&#xA;DBCC SHRINKFILE (EsportsDW_log, 1);&#xA;ALTER DATABASE EsportsDW SET RECOVERY FULL;&#xA;DELETE FROM Fact_PlayerPerformance;&#xA;DELETE FROM Dim_Tournament;&#xA;DELETE FROM Dim_Player;&#xA;DELETE FROM Dim_Map;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9CC982C5-D7BD-4AF7-98B8-CDDEF5B5FF85}"
+      DTS:From="Package\Truncate Dimension Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Dim_Tournament" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{20EEBCE6-48F3-4B85-BEF1-B29D0EB3C680}"
+      DTS:From="Package\Load Dim_Tournament"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load Dim_Player with SCD2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{CF0C1D86-CB1C-40EC-ADF4-217841052EFA}"
+      DTS:From="Package\Load Dim_Player with SCD2"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Load Dim_Map" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Load Dim_Map"
+          TopLeft="171,383" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Load Dim_Player with SCD2"
+          TopLeft="132,268" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Load Dim_Tournament"
+          TopLeft="106,128" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Truncate Dimension Tables"
+          TopLeft="59,26" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="165.5,68">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36,60"
+              Start="0,0"
+              End="36,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="32,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32,30"
+                    Point2="36,30"
+                    Point3="36,34" />
+                  <mssgle:LineSegment
+                    End="36,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="201.5,170">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.5,98"
+              Start="0,0"
+              End="39.5,90.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45"
+                    Point2="0,49"
+                    Point3="4,49" />
+                  <mssgle:LineSegment
+                    End="35.5,49" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.5,49"
+                    Point2="39.5,49"
+                    Point3="39.5,53" />
+                  <mssgle:LineSegment
+                    End="39.5,90.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="244.25,310">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Dim_Map">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Load Dim_Map\OLE DB Source"
+          TopLeft="96,20" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Load Dim_Map\OLE DB Destination"
+          TopLeft="94,119" />
+        <EdgeLayout
+          Id="Package\Load Dim_Map.Paths[OLE DB Source Output]"
+          TopLeft="173.5,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_Map\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_Map\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Dim_Player with SCD2">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Load Dim_Player with SCD2\Insert Updated Player"
+          TopLeft="155,340" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Load Dim_Player with SCD2\Expire Old Record"
+          TopLeft="160,270" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load Dim_Player with SCD2\Insert New Players"
+          TopLeft="304,194" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Load Dim_Player with SCD2\OLE DB Source"
+          TopLeft="96,30" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Load Dim_Player with SCD2\Conditional Split"
+          TopLeft="99,194" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Load Dim_Player with SCD2\Lookup"
+          TopLeft="136,113" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Load Dim_Player with SCD2\Derived Column"
+          TopLeft="347,121" />
+        <EdgeLayout
+          Id="Package\Load Dim_Player with SCD2.Paths[TeamChanged]"
+          TopLeft="178.5,236">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66,34"
+              Start="0,0"
+              End="66,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="4,17" />
+                  <mssgle:LineSegment
+                    End="62,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="62,17"
+                    Point2="66,17"
+                    Point3="66,21" />
+                  <mssgle:LineSegment
+                    End="66,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0.585917968750003,22,64.8281640625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dim_Player with SCD2.Paths[OLE DB Source Output]"
+          TopLeft="174.5,72">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19,41"
+              Start="0,0"
+              End="19,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
+                  <mssgle:LineSegment
+                    End="15,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15,20.5"
+                    Point2="19,20.5"
+                    Point3="19,24.5" />
+                  <mssgle:LineSegment
+                    End="19,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dim_Player with SCD2.Paths[OLE DB Command Output]"
+          TopLeft="246,312">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dim_Player with SCD2.Paths[Lookup No Match Output]"
+          TopLeft="251,134">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="96,8"
+              Start="0,0"
+              End="88.5,8">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="44,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44,0"
+                    Point2="48,0"
+                    Point3="48,4" />
+                  <mssgle:LineSegment
+                    End="48,4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48,4"
+                    Point2="48,8"
+                    Point3="52,8" />
+                  <mssgle:LineSegment
+                    End="88.5,8" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-7.80638671875,9,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dim_Player with SCD2.Paths[Lookup Match Output]"
+          TopLeft="193.5,155">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15,39"
+              Start="0,0"
+              End="-15,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5"
+                    Point2="0,19.5"
+                    Point3="-4,19.5" />
+                  <mssgle:LineSegment
+                    End="-11,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11,19.5"
+                    Point2="-15,19.5"
+                    Point3="-15,23.5" />
+                  <mssgle:LineSegment
+                    End="-15,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.69138671875,24.5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Dim_Player with SCD2.Paths[Derived Column Output]"
+          TopLeft="426,163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-36.5,31"
+              Start="0,0"
+              End="-36.5,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="-4,15.5" />
+                  <mssgle:LineSegment
+                    End="-32.5,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-32.5,15.5"
+                    Point2="-36.5,15.5"
+                    Point3="-36.5,19.5" />
+                  <mssgle:LineSegment
+                    End="-36.5,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_Player with SCD2\Insert Updated Player">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_Player with SCD2\Insert New Players">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_Player with SCD2\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_Player with SCD2\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Dim_Tournament">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Load Dim_Tournament\OLE DB Source"
+          TopLeft="89,35" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Load Dim_Tournament\OLE DB Destination"
+          TopLeft="91,143" />
+        <EdgeLayout
+          Id="Package\Load Dim_Tournament.Paths[OLE DB Source Output]"
+          TopLeft="179,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66"
+              Start="0,0"
+              End="0,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_Tournament\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Dim_Tournament\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
