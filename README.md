@@ -270,5 +270,3 @@ The solution provides a centralized analytical platform for esports performance 
 | Date Coverage             | Jan 2023 – Dec 2024 |
 
 
-Data Warehousing and Business Intelligence (IT3021)
-Sri Lanka Institute of Information Technology (SLIIT)
