@@ -1,0 +1,290 @@
+﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="5da21b83-6763-4664-868f-ed9baf8f021b" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>EsportsDW</ID>
+  <Name>EsportsDW</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+      <Value></Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout />
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>0</DiagramViewPortLeft>
+            <DiagramViewPortTop>0</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>EsportsDW</DataSourceID>
+  <Schema>
+    <xs:schema id="EsportsDW" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="EsportsDW" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="dc5d72b3-aea1-464d-8931-a631ee6b5b84">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dbo_Fact_PlayerPerformance" msprop:DbTableName="Fact_PlayerPerformance" msprop:FriendlyName="Fact_PlayerPerformance" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="d46bbfa0-6419-4313-88dd-0218dacdaa80">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="fact_key" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="fact_key" msprop:DbColumnName="fact_key" msprop:design-time-name="58b32816-291a-42a6-89e8-e0759a1c1b86" type="xs:int" />
+                  <xs:element name="date_key" msprop:FriendlyName="date_key" msprop:DbColumnName="date_key" msprop:design-time-name="0cd50df3-8de5-40ff-8168-754dbec327b6" type="xs:int" />
+                  <xs:element name="player_key" msprop:FriendlyName="player_key" msprop:DbColumnName="player_key" msprop:design-time-name="add029d6-fff7-4e36-a883-fe118dcafdb2" type="xs:int" />
+                  <xs:element name="tournament_key" msprop:FriendlyName="tournament_key" msprop:DbColumnName="tournament_key" msprop:design-time-name="8fdeb090-d512-4a34-8ddc-c16a3755ffc8" type="xs:int" />
+                  <xs:element name="map_key" msprop:FriendlyName="map_key" msprop:DbColumnName="map_key" msprop:design-time-name="4e94677b-f0aa-48fc-b12b-a961aac75837" type="xs:int" />
+                  <xs:element name="match_type_key" msprop:FriendlyName="match_type_key" msprop:DbColumnName="match_type_key" msprop:design-time-name="921ae4a6-028c-4d61-869a-0b6e19640d5b" type="xs:int" />
+                  <xs:element name="record_id" msprop:FriendlyName="record_id" msprop:DbColumnName="record_id" msprop:design-time-name="6e9a2b8d-5887-473f-a12d-9805814c1028" type="xs:int" />
+                  <xs:element name="kills" msprop:FriendlyName="kills" msprop:DbColumnName="kills" msprop:design-time-name="e2348539-3286-4901-b54a-2ab65599dd3a" type="xs:unsignedByte" minOccurs="0" />
+                  <xs:element name="assists" msprop:FriendlyName="assists" msprop:DbColumnName="assists" msprop:design-time-name="6ddeef9d-fe6d-48c7-a13a-be03317b3237" type="xs:unsignedByte" minOccurs="0" />
+                  <xs:element name="deaths" msprop:FriendlyName="deaths" msprop:DbColumnName="deaths" msprop:design-time-name="fb645d4d-e770-4458-a83b-f54701efde95" type="xs:unsignedByte" minOccurs="0" />
+                  <xs:element name="accuracy_percent" msprop:FriendlyName="accuracy_percent" msprop:DbColumnName="accuracy_percent" msprop:design-time-name="ee5794c2-8779-4f88-853f-f33296d1ce02" type="xs:decimal" minOccurs="0" />
+                  <xs:element name="reaction_time_ms" msprop:FriendlyName="reaction_time_ms" msprop:DbColumnName="reaction_time_ms" msprop:design-time-name="d071d3dc-f41e-4df4-bd65-e8ee5ee01194" type="xs:decimal" minOccurs="0" />
+                  <xs:element name="fatigue_index" msprop:FriendlyName="fatigue_index" msprop:DbColumnName="fatigue_index" msprop:design-time-name="72235bb5-1828-4381-9b48-2abf077541ce" type="xs:decimal" minOccurs="0" />
+                  <xs:element name="performance_score" msprop:FriendlyName="performance_score" msprop:DbColumnName="performance_score" msprop:design-time-name="1b23f9f8-a799-4264-b081-3e6eeee3b044" type="xs:decimal" minOccurs="0" />
+                  <xs:element name="win_probability" msprop:FriendlyName="win_probability" msprop:DbColumnName="win_probability" msprop:design-time-name="fd39a9ec-4a41-4d7b-80f3-0231d6e91de3" type="xs:decimal" minOccurs="0" />
+                  <xs:element name="match_outcome" msprop:FriendlyName="match_outcome" msprop:DbColumnName="match_outcome" msprop:design-time-name="84d2a9db-487b-4e75-92d1-b33a92ecd038" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="mvp_award" msprop:FriendlyName="mvp_award" msprop:DbColumnName="mvp_award" msprop:design-time-name="2aff5fd2-9f17-41ac-aace-76e8c88b2d12" type="xs:boolean" minOccurs="0" />
+                  <xs:element name="kd_ratio" msdata:ReadOnly="true" msprop:FriendlyName="kd_ratio" msprop:DbColumnName="kd_ratio" msprop:design-time-name="2c58222f-da90-4f24-83ca-a9fc48719326" type="xs:decimal" minOccurs="0" />
+                  <xs:element name="accm_txn_create_time" msprop:FriendlyName="accm_txn_create_time" msprop:DbColumnName="accm_txn_create_time" msprop:design-time-name="3b7fe814-e8bb-4488-823c-3ab6744393eb" type="xs:dateTime" minOccurs="0" />
+                  <xs:element name="accm_txn_complete_time" msprop:FriendlyName="accm_txn_complete_time" msprop:DbColumnName="accm_txn_complete_time" msprop:design-time-name="a320bf73-2404-4aae-98a6-5ab9d068254d" type="xs:dateTime" minOccurs="0" />
+                  <xs:element name="txn_process_time_hours" msdata:ReadOnly="true" msprop:FriendlyName="txn_process_time_hours" msprop:DbColumnName="txn_process_time_hours" msprop:design-time-name="8ed6dec1-c1e6-4de6-8982-bd641d54eed8" type="xs:int" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Date" msprop:DbTableName="Dim_Date" msprop:FriendlyName="Dim_Date" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="f3cf0aed-e41b-4093-8ee1-fe3421d37497">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="date_key" msprop:FriendlyName="date_key" msprop:DbColumnName="date_key" msprop:design-time-name="2a1c5a76-e693-4ccd-90ee-da56d0d9ac7c" type="xs:int" />
+                  <xs:element name="full_date" msprop:FriendlyName="full_date" msprop:DbColumnName="full_date" msprop:design-time-name="2dbd46c7-044f-4141-82ee-2c956803c64e" type="xs:dateTime" />
+                  <xs:element name="day_of_week" msprop:FriendlyName="day_of_week" msprop:DbColumnName="day_of_week" msprop:design-time-name="c7259814-a15e-4834-b788-a439a744d0a6" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="day_num" msprop:FriendlyName="day_num" msprop:DbColumnName="day_num" msprop:design-time-name="3a2d2c1b-005a-4056-9996-a6d1c68a77fd" type="xs:unsignedByte" minOccurs="0" />
+                  <xs:element name="week_num" msprop:FriendlyName="week_num" msprop:DbColumnName="week_num" msprop:design-time-name="7f72a9dc-e064-44ff-a822-30dc012016f6" type="xs:unsignedByte" minOccurs="0" />
+                  <xs:element name="month_num" msprop:FriendlyName="month_num" msprop:DbColumnName="month_num" msprop:design-time-name="86e60c65-0706-439f-a3eb-53a3fb2f9280" type="xs:unsignedByte" minOccurs="0" />
+                  <xs:element name="month_name" msprop:FriendlyName="month_name" msprop:DbColumnName="month_name" msprop:design-time-name="251c9546-0fac-42ab-814e-8bddf9bbe119" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="quarter" msprop:FriendlyName="quarter" msprop:DbColumnName="quarter" msprop:design-time-name="3ee5cd27-ede5-4712-b354-e745330beca9" type="xs:unsignedByte" minOccurs="0" />
+                  <xs:element name="year" msprop:FriendlyName="year" msprop:DbColumnName="year" msprop:design-time-name="0bed3499-8de8-47f3-a30c-385551c402f7" type="xs:short" minOccurs="0" />
+                  <xs:element name="is_weekend" msprop:FriendlyName="is_weekend" msprop:DbColumnName="is_weekend" msprop:design-time-name="311171c7-a474-482a-b55f-05a390e29e70" type="xs:boolean" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Player" msprop:DbTableName="Dim_Player" msprop:FriendlyName="Dim_Player" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="d2330fa2-addc-4ea3-b9a4-992abe5889e3">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="player_key" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="player_key" msprop:DbColumnName="player_key" msprop:design-time-name="0730a814-2f50-4415-80ad-4a8f9074822c" type="xs:int" />
+                  <xs:element name="player_id" msprop:FriendlyName="player_id" msprop:DbColumnName="player_id" msprop:design-time-name="6ab9383d-2565-4b77-a5be-e3bde29d4cec" type="xs:int" />
+                  <xs:element name="player_name" msprop:FriendlyName="player_name" msprop:DbColumnName="player_name" msprop:design-time-name="ee3d10ad-16dd-4d08-bea4-d16497eb64e0" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="100" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="player_role" msprop:FriendlyName="player_role" msprop:DbColumnName="player_role" msprop:design-time-name="f5bdfe04-b74d-408b-bba0-6419183d5a1d" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="country" msprop:FriendlyName="country" msprop:DbColumnName="country" msprop:design-time-name="ed720db4-0d34-4a04-a6b6-eada1f4d5a42" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="join_year" msprop:FriendlyName="join_year" msprop:DbColumnName="join_year" msprop:design-time-name="7f79f9de-b41c-4898-8587-7831efbc8d02" type="xs:int" minOccurs="0" />
+                  <xs:element name="platform" msprop:FriendlyName="platform" msprop:DbColumnName="platform" msprop:design-time-name="c0f2f615-c7d1-41c2-bbd5-596f3fe303c9" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="team_name" msprop:FriendlyName="team_name" msprop:DbColumnName="team_name" msprop:design-time-name="8eb92729-cf53-4514-9a78-59f288d5792b" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="100" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="region" msprop:FriendlyName="region" msprop:DbColumnName="region" msprop:design-time-name="8553d1d5-74e9-4e59-abec-2bef0ba50d7e" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="is_active" msprop:FriendlyName="is_active" msprop:DbColumnName="is_active" msprop:design-time-name="9032695d-e2be-4679-a879-2873e87d009b" type="xs:boolean" minOccurs="0" />
+                  <xs:element name="effective_date" msprop:FriendlyName="effective_date" msprop:DbColumnName="effective_date" msprop:design-time-name="aaf2c343-8cd1-4733-9e46-bef7e83a8749" type="xs:dateTime" />
+                  <xs:element name="expiry_date" msprop:FriendlyName="expiry_date" msprop:DbColumnName="expiry_date" msprop:design-time-name="5cb89cb3-df52-4e58-9b32-fce0a12b923e" type="xs:dateTime" minOccurs="0" />
+                  <xs:element name="is_current" msprop:FriendlyName="is_current" msprop:DbColumnName="is_current" msprop:design-time-name="d3de26ad-1521-4851-8242-6b86596e9260" type="xs:boolean" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Tournament" msprop:DbTableName="Dim_Tournament" msprop:FriendlyName="Dim_Tournament" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="d0592f1b-b2d0-48a3-bc51-93838b9b9153">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="tournament_key" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="tournament_key" msprop:DbColumnName="tournament_key" msprop:design-time-name="ee8db214-bfe3-4e13-b151-530aee4c804a" type="xs:int" />
+                  <xs:element name="tournament_id" msprop:FriendlyName="tournament_id" msprop:DbColumnName="tournament_id" msprop:design-time-name="19d4d91d-c921-4c04-8f99-2b324a585df7" type="xs:int" minOccurs="0" />
+                  <xs:element name="tournament_name" msprop:FriendlyName="tournament_name" msprop:DbColumnName="tournament_name" msprop:design-time-name="80071505-c046-4d22-a761-e941605c7e7a" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="200" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="game_title" msprop:FriendlyName="game_title" msprop:DbColumnName="game_title" msprop:design-time-name="948d24ab-a6be-460c-950c-97104cfba879" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="100" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="region" msprop:FriendlyName="region" msprop:DbColumnName="region" msprop:design-time-name="b3853515-29b7-4ffe-a23b-b6ed9dfb102a" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="prize_pool_usd" msprop:FriendlyName="prize_pool_usd" msprop:DbColumnName="prize_pool_usd" msprop:design-time-name="08f9d24a-1511-42ae-b5c5-9ae98f026fd4" type="xs:int" minOccurs="0" />
+                  <xs:element name="start_date" msprop:FriendlyName="start_date" msprop:DbColumnName="start_date" msprop:design-time-name="5e03c283-becc-45a5-9b92-391375a5847e" type="xs:dateTime" minOccurs="0" />
+                  <xs:element name="end_date" msprop:FriendlyName="end_date" msprop:DbColumnName="end_date" msprop:design-time-name="701fe24b-9205-4ab5-93a5-eb93ee9f27e1" type="xs:dateTime" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Map" msprop:DbTableName="Dim_Map" msprop:FriendlyName="Dim_Map" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="c6b825e7-3a31-418d-940a-32bd4ab4cfe6">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="map_key" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="map_key" msprop:DbColumnName="map_key" msprop:design-time-name="266ec57b-3ce5-4302-96ee-6204a4d0f358" type="xs:int" />
+                  <xs:element name="map_name" msprop:FriendlyName="map_name" msprop:DbColumnName="map_name" msprop:design-time-name="b3eb9d34-bdb9-4bf4-a1f9-b181a70b2a66" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="100" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="map_type" msprop:FriendlyName="map_type" msprop:DbColumnName="map_type" msprop:design-time-name="e0ae1b5e-37cd-4810-bbb1-071a6a334f56" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="map_size" msprop:FriendlyName="map_size" msprop:DbColumnName="map_size" msprop:design-time-name="f3829124-f25f-4796-b4c5-9ed5ca919842" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_MatchType" msprop:DbTableName="Dim_MatchType" msprop:FriendlyName="Dim_MatchType" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="8884de1f-6668-415c-aba6-8eafe5fb3728">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="match_type_key" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="match_type_key" msprop:DbColumnName="match_type_key" msprop:design-time-name="31b1d7ee-013a-4505-b9a3-287407dab106" type="xs:int" />
+                  <xs:element name="match_type_name" msprop:FriendlyName="match_type_name" msprop:DbColumnName="match_type_name" msprop:design-time-name="f23f788d-3f60-4541-aeff-ee9d9bb54eba" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="stage_order" msprop:FriendlyName="stage_order" msprop:DbColumnName="stage_order" msprop:design-time-name="4b3de300-eb8d-401a-85a0-62378e57ba04" type="xs:unsignedByte" minOccurs="0" />
+                  <xs:element name="is_elimination" msprop:FriendlyName="is_elimination" msprop:DbColumnName="is_elimination" msprop:design-time-name="53fcb9ef-8044-4086-a2a5-8dd411ab8070" type="xs:boolean" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Fact_PlayerPerformance" />
+          <xs:field xpath="fact_key" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Date_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Date" />
+          <xs:field xpath="date_key" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Player_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Player" />
+          <xs:field xpath="player_key" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Tournament_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Tournament" />
+          <xs:field xpath="tournament_key" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Map_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Map" />
+          <xs:field xpath="map_key" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_MatchType_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_MatchType" />
+          <xs:field xpath="match_type_key" />
+        </xs:unique>
+        <xs:keyref name="FK__Fact_Play__playe__571DF1D5" refer="dbo_Dim_Player_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_PlayerPerformance" />
+          <xs:field xpath="player_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Play__map_k__59063A47" refer="dbo_Dim_Map_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_PlayerPerformance" />
+          <xs:field xpath="map_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Play__date___5629CD9C" refer="dbo_Dim_Date_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_PlayerPerformance" />
+          <xs:field xpath="date_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Play__match__59FA5E80" refer="dbo_Dim_MatchType_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_PlayerPerformance" />
+          <xs:field xpath="match_type_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Play__tourn__5812160E" refer="dbo_Dim_Tournament_Constraint1">
+          <xs:selector xpath=".//dbo_Fact_PlayerPerformance" />
+          <xs:field xpath="tournament_key" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+    <EsportsDW xmlns="" />
+  </Schema>
+</DataSourceView>

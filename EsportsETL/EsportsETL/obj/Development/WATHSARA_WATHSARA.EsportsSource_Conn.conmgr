@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="WATHSARA_WATHSARA.EsportsSource"
+  DTS:DTSID="{22A1C82E-5E7A-4D95-A147-C34679A28C82}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=WATHSARA\WATHSARA;Initial Catalog=EsportsSource;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-EsportsETL-{22A1C82E-5E7A-4D95-A147-C34679A28C82}WATHSARA\WATHSARA.EsportsSource;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
